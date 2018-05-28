@@ -38,7 +38,7 @@ header {
     line-height: px2rem(80);
     border-bottom: 1px solid #f2f2f2;
     background: #fff;
-    z-index: 999;
+    z-index: 666;
     div {
         flex: 1;
     }

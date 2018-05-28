@@ -1,17 +1,17 @@
 <template>
-<div class="infinite-scroll">
-    <c-header></c-header>
+<section class="infinite-scroll">
+    <c-header :title="$route.name"></c-header>
     <div class="wrapper">
         <vue-scroller @infinite-scroll="loadmore">
             <c-lists :items="dataLists"></c-lists>
         </vue-scroller>
     </div>
-</div>
+</section>
 </template>
 
 <script>
-import CHeader from 'components/header/index';
-import CLists from 'components/pages/scroller/list';
+import CHeader from 'components/Header/index';
+import CLists from 'components/Pages/scroller/list';
 
 export default {
     name: "infinite-scroll",

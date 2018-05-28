@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import MyHeader from "components/header/index";
+import MyHeader from "components/Header/index";
 
 export default {
     name: "home",

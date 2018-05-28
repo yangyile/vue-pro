@@ -59,6 +59,13 @@ export default new Router({
         component: (resolve) => {
             require(['@/pages/scroller/SimplePullToRefresh'], resolve)
         }
+    },
+    {
+        path: '/DialogHome',
+        name: 'DialogHome',
+        component: (resolve) => {
+            require(['@/pages/dialog/index'], resolve)
+        }
     }
     ]
 })

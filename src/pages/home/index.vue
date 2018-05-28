@@ -1,22 +1,22 @@
 <template>
-<div class="home">
-    <my-header></my-header>
+<section class="home">
+    <my-header :title="$router.name"></my-header>
     <ul>
         <router-link
             :to="{ path: '/ScrollHome' }"
             tag="li"
         >scroller<span class="iconfont icon-more arrow-more"></span></router-link>
             <router-link
-                :to="{ path: '/Dialog' }"
+                :to="{ path: '/DialogHome' }"
                 tag="li"
             >dialog<span class="iconfont icon-more arrow-more"></span></router-link>
     </ul>
-</div>
+</section>
 </template>
 
 
 <script>
-import MyHeader from "components/header/index";
+import MyHeader from "components/Header/index";
 
 export default {
     name: "home",

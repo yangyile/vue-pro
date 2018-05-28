@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import install from './components/js/index.js'
+import install from './components/JS/index.js'
 import '@/libs/flexible.js'
 import http from '@/libs/httpRequest.js'
 import mixin from '@/libs/mixin.js'
