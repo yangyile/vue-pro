@@ -1,6 +1,7 @@
 <template>
-    <section class="dialog-toast">
-        {{ name }}
+    <section class="dialog-toast" v-if="show">
+        <div class="toast-main"></div>
+        <dialog-mask></dialog-mask>
     </section>
 </template>
 
@@ -9,14 +10,22 @@ export default {
     name: 'toast',
     data() {
         return {
-            name: 'toast'
+            name: 'toast',
+            show: false
         }
     },
     components: {},
     props: [],
     beforeMount() {},
     mounted() {},
-    methods: {}
+    methods: {
+        showToast: function() {
+            this.show = true;
+            setTimeout(() => {
+                this.show = false;
+            }, 1500);
+        }
+    }
 }
 </script>
 

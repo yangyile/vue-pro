@@ -14,18 +14,7 @@
     @return $value/75 * 1rem;
 }
 
-.ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.clearfix::after {
-    content: '';
-    display: block;
-    clear: both;
-}
-
+// 公共页面样式
 html {
     height: 100%;
     body {
@@ -36,4 +25,36 @@ html {
     width: 100%;
     height: 100%;
     overflow: scroll;
+}
+
+
+// 文本超出隐藏
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// 清除浮动
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+// 按钮样式
+.btn {
+    display: inline-block;
+    width: px2rem(180);
+    height: px2rem(80);
+    line-height: px2rem(80);
+    border: px2rem(2) solid #f2f2f2;
+    border-radius: px2rem(40);
+}
+.btn-primary {
+    background: rgb(104, 104, 230);
+    color: #ffffff;
+}
+.btn-primary:hover {
+    background: rgb(79, 79, 228);
 }
