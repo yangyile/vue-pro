@@ -5,14 +5,9 @@ import Toast from './src/components/Toast/index';
 let $vmAlert = null;
 let $vmConfirm = null;
 let $vmToast = null;
-let dialogEle = null;
 
 export default {
     install: function(Vue, options) {
-        if(!dialogEle) {
-            dialogEle = document.createElement('div');
-            dialogEle.setAttribute('name', 'dialog');
-        }
         // 创建alert实例并挂载
         if(!$vmAlert) {
             let alertPlugin = Vue.extend(Alert);
@@ -21,7 +16,7 @@ export default {
                 el: document.createElement('div')
             });
 
-            dialogEle.appendChild($vmAlert.$el);
+            document.body.appendChild($vmAlert.$el);
         }
         if(!Vue.prototype.$alert) {
             Vue.prototype.$alert = $vmAlert.showAlert;
@@ -35,7 +30,7 @@ export default {
             $vmConfirm = new confirmPlugin({
                 el: document.createElement('div')
             });
-            dialogEle.appendChild($vmConfirm.$el);
+            document.body.appendChild($vmConfirm.$el);
         }
         if(!Vue.prototype.$confirm) {
             Vue.prototype.$confirm = $vmConfirm.showConfirm;
@@ -49,11 +44,10 @@ export default {
             $vmToast = new toastPlugin({
                 el: document.createElement('div')
             });
-            dialogEle.appendChild($vmToast.$el);
+            document.body.appendChild($vmToast.$el);
         }
         if(!Vue.prototype.$toast) {
             Vue.prototype.$toast = $vmToast.showToast;
         }
-        document.body.appendChild(dialogEle);
     }
 }

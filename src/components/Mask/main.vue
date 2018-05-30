@@ -1,5 +1,7 @@
 <template>
-    <section class="mask"></section>
+    <section class="mask">
+        <slot></slot>
+    </section>
 </template>
 
 <script>
