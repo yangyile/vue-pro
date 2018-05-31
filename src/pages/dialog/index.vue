@@ -25,7 +25,7 @@ export default {
     mounted() {},
     methods: {
         showAlert: function() {
-            this.$alert();
+            this.$alert({ text: 'hello', okBtnText: 'ok', cancelBtnText: 'cancel' });
         },
         showConfirm: function() {
             this.$confirm();
