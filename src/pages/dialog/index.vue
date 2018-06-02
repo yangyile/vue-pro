@@ -25,10 +25,12 @@ export default {
     mounted() {},
     methods: {
         showAlert: function() {
-            this.$alert({ text: 'hello', okBtnText: 'ok', cancelBtnText: 'cancel' });
+            this.$alert('this is a msg.', {});
         },
         showConfirm: function() {
-            this.$confirm();
+            this.$confirm('this is a msg.', { okBtnText: '确定', cancelBtnText: '取消' }, (status) => {
+                console.log(status);
+            });
         },
         showToast: function() {
             this.$toast();

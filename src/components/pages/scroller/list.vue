@@ -25,7 +25,6 @@ export default {
 <style lang="scss" scoped>
 ul.list {
     li {
-        width: 100%;
         height: px2rem(100);
         line-height: px2rem(100);
         padding-left: px2rem(20);

@@ -1,11 +1,9 @@
 <template>
-<section class="bounce-scroller">
+<section class="wrapper">
     <c-header :title="$route.name"></c-header>
-    <div class="wrapper">
-        <vue-scroller>
-            <c-lists :items="dataLists"></c-lists>
-        </vue-scroller>
-    </div>
+    <vue-scroller>
+        <c-lists :items="dataLists"></c-lists>
+    </vue-scroller>
 </section>
 </template>
 

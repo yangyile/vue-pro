@@ -1,8 +1,14 @@
 let DialogConfig = {
     AlertConfig: {
-        okBtnText: '确定',
-        cancelBtnText: '取消',
-        text: 'ok'
+        title: 'this is title',
+        okBtnText: 'ok',
+        text: '好'
+    },
+    ConfirmConfig: {
+        title: 'this is title',
+        okBtnText: 'ok',
+        cancelBtnText: 'cancel',
+        text: 'please choose ok or cancel'
     }
 }
 

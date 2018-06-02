@@ -2,47 +2,40 @@
 <transition name="fade">
     <dialog-mask v-if="show">
         <section
-            class="dialog-alert"
+            class="alert-main"
             v-if="show"
         >
-            <div class="alert-main">
-                <div class="close">
-                    <a
-                        href="javascript: void(0)"
-                        class="iconfont icon-close"
-                        @click="hideAlert"
-                    ></a>
-                </div>
-                <div class="alert-body">{{ text }}</div>
-                <div class="alert-btn">
-                    <span
-                        class="btn btn-primary"
-                        @click="hideAlert"
-                    >{{ okBtnText }}</span>
-                        <span
-                            class="btn"
-                            @click="hideAlert"
-                        >{{ cancelBtnText }}</span>
-                </div>
+            <div class="alert-header">
+                <span class="alert-title">{{ title }}</span>
+                <a
+                    href="javascript: void(0)"
+                    class="close iconfont icon-close"
+                    @click="hideAlert"
+                ></a>
+            </div>
+            <div class="alert-body">{{ text }}</div>
+            <div class="alert-btn">
+                <span
+                    class="btn btn-primary"
+                    @click="hideAlert"
+                >{{ okBtnText }}</span>
             </div>
             </section>
     </dialog-mask>
 </transition>
 </template>
 
-
 <script>
-import DialogConfig from "../../config/config.js";
+import DialogConfig from '../../config/config.js';
 
 export default {
-    name: "alert",
+    name: 'alert',
     data() {
         return {
             show: false,
-            text: "",
-            okBtnText: "",
-            cancelBtnText: "",
-            okCallback: null
+            title: '',
+            text: '',
+            okBtnText: ''
         };
     },
     components: {},
@@ -50,80 +43,77 @@ export default {
     beforeMount() {},
     mounted() {},
     methods: {
-        showAlert: function (options, callback) {
+        showAlert: function (msg, opts) {
+            let text = msg;
+            let options = opts ? opts : {};
+
+            if(typeof msg === 'object') {
+                text = '';
+                options = msg;
+            }
+
             this.show = true;
+            this.text = text ? text : '';
+
             if (options) {
-                this.text = options.text ? options.text : DialogConfig.AlertConfig.text;
+                this.title = options.title ? options.title : DialogConfig.AlertConfig.title;
                 this.okBtnText = options.okBtnText ?
                     options.okBtnText :
                     DialogConfig.AlertConfig.okBtnText;
-                this.cancelBtnText = options.cancelBtnText ?
-                    options.cancelBtnText :
-                    DialogConfig.AlertConfig.cancelBtnText;
             } else {
-                this.text = DialogConfig.AlertConfig.text;
+                this.title = DialogConfig.AlertConfig.title;
                 this.okBtnText = DialogConfig.AlertConfig.okBtnText;
-                this.cancelBtnText = DialogConfig.AlertConfig.cancelBtnText;
-            }
-
-            if (callback) {
-                this.okCallback = callback ? callback : null;
             }
         },
         hideAlert: function () {
             this.show = false;
-            this.okCallback && this.okCallback();
         }
     }
 };
 </script>
 
-
 <style lang="scss" scoped>
-.fade-enter,
-.fade-leave-active {
-    opacity: 0;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-    transition: all 0.5s ease;
-}
-
-.dialog-alert {
-    .alert-main {
-        position: absolute;
-        width: 80%;
-        left: 0;
-        right: 0;
-        margin: px2rem(375) auto 0;
-        background: #fff;
-        border-radius: px2rem(20);
-        z-index: 1000;
+.alert-main {
+    position: absolute;
+    width: 80%;
+    left: 0;
+    right: 0;
+    margin: px2rem(375) auto 0;
+    background: #fff;
+    border-radius: px2rem(20);
+    z-index: 1000;
+    .alert-header {
+        display: flex;
+        .alert-title {
+            display: inline-block;
+            flex: 1;
+            height: px2rem(70);
+            line-height: px2rem(70);
+            padding-left: px2rem(30);
+            color: #666666;
+            font-weight: bold;
+        }
         .close {
+            flex: 1;
+            display: inline-block;
+            width: px2rem(40);
+            height: px2rem(40);
             padding: px2rem(20);
             text-align: right;
-            a {
-                display: inline-block;
-                width: px2rem(40);
-                height: px2rem(40);
-                text-decoration: none;
-            }
         }
-        .alert-body {
-            padding: px2rem(50);
-            text-align: center;
-        }
-        .alert-btn {
-            display: flex;
-            padding: px2rem(30) 0;
-            justify-content: center;
-            span {
-                text-align: center;
-            }
-            span:nth-child(1) {
-                margin-right: px2rem(35);
-            }
+    }
+    .alert-body {
+        padding: px2rem(20) px2rem(60);
+        text-align: left;
+        word-break: break-all;
+    }
+    .alert-btn {
+        padding: px2rem(30) 0;
+        text-align: right;
+        span {
+            display: inline-block;
+            margin-right: px2rem(30);
+            font-weight: bold;
         }
     }
 }

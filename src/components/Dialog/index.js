@@ -22,7 +22,6 @@ export default {
             Vue.prototype.$alert = $vmAlert.showAlert;
         }
 
-
         // 创建confirm实例并挂载
         if(!$vmConfirm) {
             let confirmPlugin = Vue.extend(Confirm);
@@ -35,7 +34,6 @@ export default {
         if(!Vue.prototype.$confirm) {
             Vue.prototype.$confirm = $vmConfirm.showConfirm;
         }
-
 
         // 创建toast实例并挂载
         if(!$vmToast) {

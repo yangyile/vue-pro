@@ -17,13 +17,15 @@
 // 公共页面样式
 html {
     height: 100%;
-    body {
-        height: 100%;
-    }
 }
 .wrapper {
+    position: absolute;
+    box-sizing: border-box;
+    padding: px2rem(80) 0 0;
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
     overflow: scroll;
 }
 div[name="dialog"] {
@@ -35,6 +37,16 @@ div[name="dialog"] {
     z-index: -1;
 }
 
+// 过渡效果
+.fade-enter,
+.fade-leave-active {
+    opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all 0.5s ease;
+}
 
 // 文本超出隐藏
 .ellipsis {
@@ -58,6 +70,7 @@ div[name="dialog"] {
     line-height: px2rem(80);
     border: px2rem(2) solid #f2f2f2;
     border-radius: px2rem(40);
+    text-align: center;
 }
 .btn-primary {
     background: rgb(104, 104, 230);

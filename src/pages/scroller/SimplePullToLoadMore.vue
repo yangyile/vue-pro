@@ -1,16 +1,14 @@
 <template>
-<section class="pull-to-loadmore">
+<section class="wrapper">
     <c-header :title="$route.name"></c-header>
-    <div class="wrapper">
-        <vue-scroller
-            :bottom-load-method="loadmore"
-            ref="myScroller"
-            :bottomConfig="bottomConf"
-            :bottomBlockHeight="px2rem(80)"
-        >
-            <c-lists :items="dataLists"></c-lists>
+    <vue-scroller
+        :bottom-load-method="loadmore"
+        ref="myScroller"
+        :bottomConfig="bottomConf"
+        :bottomBlockHeight="px2rem(80)"
+    >
+        <c-lists :items="dataLists"></c-lists>
         </vue-scroller>
-    </div>
 </section>
 </template>
 
@@ -25,14 +23,13 @@ export default {
         CLists
     },
     data() {
-        return {
-        };
+        return {};
     },
     mounted() {
         this.init();
     },
     methods: {
-        init: function() {
+        init: function () {
             this.resetState();
             this.getData(this.scrollerOpts, (data) => {
                 this.$refs.myScroller.actionLoaded();
@@ -41,7 +38,7 @@ export default {
         },
 
         loadmore(loaded) {
-            this.scrollerOpts.pageNum ++;
+            this.scrollerOpts.pageNum++;
             this.scrollerOpts.delay = 1500;
             this.getData(this.scrollerOpts, (data) => {
                 setTimeout(() => {
@@ -55,7 +52,7 @@ export default {
             });
         },
 
-        resetState: function() {
+        resetState: function () {
             this.scrollerOpts.pageNum = 1;
             this.scrollerOpts.delay = 0;
         }
@@ -64,10 +61,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pull-to-loadmore {
-    display: -webkit-box;
-    box-sizing: border-box;
-    height: 100%;
-    padding-top: px2rem(80);
-}
+
 </style>

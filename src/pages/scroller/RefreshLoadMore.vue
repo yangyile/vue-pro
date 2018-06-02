@@ -1,21 +1,20 @@
 <template>
-<section class="refresh-load-more">
+<section class="wrapper">
     <c-header :title="$route.name"></c-header>
-    <div class="wrapper">
-        <vue-scroller
-            :top-load-method="refresh"
-            :bottom-load-method="loadmore"
-            ref="myScroller"
-            :topConfig="topConf"
-            :bottomConfig="bottomConf"
-            :topBlockHeight="px2rem(80)"
-            :bottomBlockHeight="px2rem(80)"
-        >
-            <c-lists :items="dataLists"></c-lists>
+    <vue-scroller
+        :top-load-method="refresh"
+        :bottom-load-method="loadmore"
+        ref="myScroller"
+        :topConfig="topConf"
+        :bottomConfig="bottomConf"
+        :topBlockHeight="px2rem(80)"
+        :bottomBlockHeight="px2rem(80)"
+    >
+        <c-lists :items="dataLists"></c-lists>
         </vue-scroller>
-    </div>
 </section>
 </template>
+
 
 <script>
 import CHeader from 'components/Header/index';
@@ -28,8 +27,7 @@ export default {
         CLists
     },
     data() {
-        return {
-        };
+        return {};
     },
     mounted() {
         this.init();
@@ -56,7 +54,7 @@ export default {
         },
 
         loadmore(loaded) {
-            this.scrollerOpts.pageNum ++;
+            this.scrollerOpts.pageNum++;
             this.scrollerOpts.delay = 1500;
             this.getData(this.scrollerOpts, (data) => {
                 setTimeout(() => {
@@ -71,13 +69,14 @@ export default {
             });
         },
 
-        resetState: function() {
+        resetState: function () {
             this.scrollerOpts.pageNum = 1;
             this.scrollerOpts.delay = 0;
         }
     }
 };
 </script>
+
 
 <style lang="scss" scoped>
 .refresh-load-more {

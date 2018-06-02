@@ -1,16 +1,14 @@
 <template>
-<section class="pull-to-refresh">
+<section class="wrapper">
     <c-header :title="$route.name"></c-header>
-    <div class="wrapper">
-        <vue-scroller
-            ref="myScroller"
-            :topConfig="topConf"
-            :top-load-method="refresh"
-            :topBlockHeight="px2rem(80)"
-        >
-            <c-lists :items="dataLists"></c-lists>
-            </vue-scroller>
-    </div>
+    <vue-scroller
+        ref="myScroller"
+        :topConfig="topConf"
+        :top-load-method="refresh"
+        :topBlockHeight="px2rem(80)"
+    >
+        <c-lists :items="dataLists"></c-lists>
+        </vue-scroller>
 </section>
 </template>
 
@@ -25,8 +23,7 @@ export default {
         CLists
     },
     data() {
-        return {
-        };
+        return {};
     },
     mounted() {
         this.init();
@@ -52,7 +49,7 @@ export default {
             });
         },
 
-        resetState: function() {
+        resetState: function () {
             this.scrollerOpts.pageNum = 1;
             this.scrollerOpts.delay = 0;
         }
@@ -61,10 +58,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pull-to-refresh {
-    display: -webkit-box;
-    box-sizing: border-box;
-    height: 100%;
-    padding-top: px2rem(80);
-}
+
 </style>

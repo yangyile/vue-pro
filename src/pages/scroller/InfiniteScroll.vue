@@ -1,11 +1,9 @@
 <template>
-<section class="infinite-scroll">
+<section class="wrapper">
     <c-header :title="$route.name"></c-header>
-    <div class="wrapper">
-        <vue-scroller @infinite-scroll="loadmore">
-            <c-lists :items="dataLists"></c-lists>
-        </vue-scroller>
-    </div>
+    <vue-scroller @infinite-scroll="loadmore">
+        <c-lists :items="dataLists"></c-lists>
+    </vue-scroller>
 </section>
 </template>
 
@@ -46,10 +44,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.infinite-scroll {
-    display: -webkit-box;
-    box-sizing: border-box;
-    height: 100%;
-    padding-top: px2rem(80);
-}
 </style>
