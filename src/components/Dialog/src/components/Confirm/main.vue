@@ -19,10 +19,10 @@
                     class="btn btn-primary"
                     @click="hideConfirm('1')"
                 >{{ okBtnText }}</span>
-                <span
-                    class="btn"
-                    @click="hideConfirm('0')"
-                >{{ cancelBtnText }}</span>
+                    <span
+                        class="btn"
+                        @click="hideConfirm('0')"
+                    >{{ cancelBtnText }}</span>
             </div>
             </section>
     </dialog-mask>
@@ -54,17 +54,17 @@ export default {
             let options = opts;
             let callback = callFunc;
 
-            if(typeof msg === 'object') {
+            if (typeof msg === 'object') {
                 text = '';
                 options = msg;
-            } else if(typeof msg === 'function') {
+            } else if (typeof msg === 'function') {
                 text = '';
                 callback = msg;
             }
 
-            if(typeof opts === 'function') {
+            if (typeof opts === 'function') {
                 callback = opts;
-                if(typeof callFunc === 'object') {
+                if (typeof callFunc === 'object') {
                     options = callFunc;
                 }
             }
@@ -84,7 +84,7 @@ export default {
                 this.cancelBtnText = DialogConfig.ConfirmConfig.cancelBtnText;
             }
 
-            if(callback) {
+            if (callback) {
                 this.okCallback = callback;
             }
         },

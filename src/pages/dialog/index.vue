@@ -2,9 +2,18 @@
 <section class="dialog-home">
     <my-header :title="$route.name"></my-header>
     <div class="dialog-main">
-        <span class="btn btn-primary" @click="showAlert">alert</span>
-        <span class="btn btn-primary" @click="showConfirm">confirm</span>
-        <span class="btn btn-primary" @click="showToast">toast</span>
+        <span
+            class="btn btn-primary"
+            @click="showAlert"
+        >alert</span>
+            <span
+                class="btn btn-primary"
+                @click="showConfirm"
+            >confirm</span>
+                <span
+                    class="btn btn-primary"
+                    @click="showToast"
+                >toast</span>
     </div>
 </section>
 </template>
@@ -24,21 +33,23 @@ export default {
     beforeMount() {},
     mounted() {},
     methods: {
-        showAlert: function() {
+        showAlert: function () {
             this.$alert('this is a msg.', {});
         },
-        showConfirm: function() {
-            this.$confirm('this is a msg.', { okBtnText: '确定', cancelBtnText: '取消' }, (status) => {
+        showConfirm: function () {
+            this.$confirm('this is a msg.', {
+                okBtnText: '确定',
+                cancelBtnText: '取消'
+            }, (status) => {
                 console.log(status);
             });
         },
-        showToast: function() {
-            this.$toast();
+        showToast: function () {
+            this.$toast.info('this is a msg.');
         }
     }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .dialog-main {

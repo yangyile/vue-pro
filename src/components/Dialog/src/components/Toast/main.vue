@@ -1,8 +1,9 @@
 <template>
+<transition name="fade">
     <section class="dialog-toast" v-if="show">
-        <div class="toast-main"></div>
-        <dialog-mask></dialog-mask>
+        {{ msg }}
     </section>
+</transition>
 </template>
 
 <script>
@@ -11,7 +12,8 @@ export default {
     data() {
         return {
             name: 'toast',
-            show: false
+            show: false,
+            msg: 'ok'
         }
     },
     components: {},
@@ -19,7 +21,10 @@ export default {
     beforeMount() {},
     mounted() {},
     methods: {
-        showToast: function() {
+        info: function(msg) {
+            if(msg) {
+                this.msg = msg;
+            }
             this.show = true;
             setTimeout(() => {
                 this.show = false;
@@ -30,5 +35,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.dialog-toast {
+    position: fixed;
+    width: px2rem(450);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    text-align: center;
+    margin: 0 auto;
+    height: px2rem(70);
+    line-height: px2rem(70);
+    border-radius: px2rem(40);
+    bottom: px2rem(150);
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
 </style>

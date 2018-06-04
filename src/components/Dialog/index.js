@@ -45,7 +45,7 @@ export default {
             document.body.appendChild($vmToast.$el);
         }
         if(!Vue.prototype.$toast) {
-            Vue.prototype.$toast = $vmToast.showToast;
+            Vue.prototype.$toast = $vmToast;
         }
     }
 }
