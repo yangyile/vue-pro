@@ -2,21 +2,42 @@
 <section class="dialog-home">
     <my-header :title="$route.name"></my-header>
     <div class="dialog-main">
-        <span
-            class="btn btn-primary"
-            @click="showAlert"
-        >alert</span>
+        <div class="content-box">
+            <span
+                class="btn btn-primary"
+                @click="showAlert"
+            >alert</span>
+        </div>
+
+        <div class="content-box">
             <span
                 class="btn btn-primary"
                 @click="showConfirm"
             >confirm</span>
-                <span
-                    class="btn btn-primary"
-                    @click="showToast"
-                >toast</span>
+        </div>
+
+        <div class="content-box">
+            <span
+                class="btn btn-success"
+                @click="showSuccess"
+            >success</span>
+            <span
+                class="btn btn-info"
+                @click="showInfo"
+            >info</span>
+            <span
+                class="btn btn-warning"
+                @click="showWarning"
+            >wraning</span>
+            <span
+                class="btn btn-error"
+                @click="showError"
+            >error</span>
+        </div>
     </div>
 </section>
 </template>
+
 
 <script>
 import MyHeader from "components/Header/index";
@@ -44,15 +65,33 @@ export default {
                 console.log(status);
             });
         },
-        showToast: function () {
-            this.$toast.info('this is a msg.');
+        showSuccess: function() {
+            this.$toast.success('success.');
+        },
+        showInfo: function () {
+            this.$toast.info('this is a info.');
+        },
+        showWarning: function () {
+            this.$toast.warning('this is a wraning.');
+        },
+        showError: function () {
+            this.$toast.error('this is a error.');
         }
     }
 }
 </script>
 
+
 <style lang="scss" scoped>
 .dialog-main {
     padding-top: px2rem(100);
+    .content-box {
+        text-align: left;
+        padding: px2rem(30) 0;
+        span {
+            display: inline-block;
+            margin: px2rem(10);
+        }
+    }
 }
 </style>
