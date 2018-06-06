@@ -95,3 +95,24 @@ div[name="dialog"] {
     color: #f56c6c;
     background-color: #fef0f0;
 }
+
+.iconfont {
+    @include px2px('font-size', 24);
+}
+
+// 正在加载动画
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.spin {
+    display: inline-block;
+    animation: loading 2s linear infinite;
+}

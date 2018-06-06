@@ -66,6 +66,13 @@ export default new Router({
         component: (resolve) => {
             require(['@/pages/dialog/index'], resolve)
         }
+    },
+    {
+        path: '/LoadingHome',
+        name: 'LoadingHome',
+        component: (resolve) => {
+            require(['@/pages/loading/index'], resolve)
+        }
     }
     ]
 })

@@ -6,14 +6,17 @@
             :to="{ path: '/ScrollHome' }"
             tag="li"
         >scroller<span class="iconfont icon-more arrow-more"></span></router-link>
-            <router-link
-                :to="{ path: '/DialogHome' }"
-                tag="li"
-            >dialog<span class="iconfont icon-more arrow-more"></span></router-link>
+        <router-link
+            :to="{ path: '/DialogHome' }"
+            tag="li"
+        >dialog<span class="iconfont icon-more arrow-more"></span></router-link>
+        <router-link
+            :to="{ path: '/LoadingHome' }"
+            tag="li"
+        >loading<span class="iconfont icon-more arrow-more"></span></router-link>
     </ul>
 </section>
 </template>
-
 
 <script>
 import MyHeader from "components/Header/index";

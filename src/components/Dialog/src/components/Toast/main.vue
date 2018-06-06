@@ -1,8 +1,19 @@
 <template>
 <transition name="fade">
-    <section class="dialog-toast" v-if="show" :class="{ 'toast-success': bSuccess, 'toast-info': bInfo, 'toast-warning': bWraning, 'toast-error': bError }">
-        {{ msg }}
-    </section>
+    <section
+        class="dialog-toast"
+        v-if="show"
+        :class="{ 'toast-success': bSuccess,
+        'toast-warning': bWarning,
+        'toast-info': bInfo,
+        'toast-error': bError }"
+    >
+        <span :class="{ 'iconfont': true,
+              'icon-success': bSuccess,
+              'icon-information': bInfo,
+              'icon-warning': bWarning,
+              'icon-wrong': bError }"></span> {{ msg }}
+        </section>
 </transition>
 </template>
 
@@ -16,7 +27,7 @@ export default {
             msg: 'ok',
             bSuccess: false,
             bInfo: false,
-            bWraning: false,
+            bWarning: false,
             bError: false,
             timeoutId: ''
         }
@@ -26,14 +37,15 @@ export default {
     beforeMount() {},
     mounted() {},
     methods: {
-        success: function(msg) {
+        success: function (msg) {
+            this.resetState();
             this.bSuccess = true;
             this.show = true;
 
-            if(msg) {
+            if (msg) {
                 this.msg = msg;
             }
-            if(this.timeoutId) {
+            if (this.timeoutId) {
                 clearTimeout(this.timeoutId);
             }
             this.timeoutId = setTimeout(() => {
@@ -42,14 +54,15 @@ export default {
             }, 1500);
         },
 
-        info: function(msg) {
+        info: function (msg) {
+            this.resetState();
             this.bInfo = true;
             this.show = true;
 
-            if(msg) {
+            if (msg) {
                 this.msg = msg;
             }
-            if(this.timeoutId) {
+            if (this.timeoutId) {
                 clearTimeout(this.timeoutId);
             }
             this.timeoutId = setTimeout(() => {
@@ -58,38 +71,52 @@ export default {
             }, 1500);
         },
 
-        warning: function(msg) {
-            this.bWraning = true;
+        warning: function (msg) {
+            this.resetState();
+            this.bWarning = true;
             this.show = true;
-            if(msg) {
+
+            if (msg) {
                 this.msg = msg;
             }
-            if(this.timeoutId) {
+            if (this.timeoutId) {
                 clearTimeout(this.timeoutId);
             }
             this.timeoutId = setTimeout(() => {
-                this.bWraning = false;
+                this.bWarning = false;
                 this.show = false;
             }, 1500);
         },
 
-        error: function(msg) {
+        error: function (msg) {
+            this.resetState();
             this.bError = true;
             this.show = true;
-            if(msg) {
+
+            if (msg) {
                 this.msg = msg;
             }
-            if(this.timeoutId) {
+            if (this.timeoutId) {
                 clearTimeout(this.timeoutId);
             }
             this.timeoutId = setTimeout(() => {
                 this.bError = false;
                 this.show = false;
             }, 1500);
+        },
+
+        resetState: function () {
+            this.bSuccess = false;
+            this.bInfo = false;
+            this.bWarning = false;
+            this.bError = false;
         }
     }
 }
 </script>
+
+
+
 
 <style lang="scss" scoped>
 .dialog-toast {
@@ -107,18 +134,22 @@ export default {
     right: 0;
     z-index: 999;
 }
+
 .toast-success {
     color: #67c23a;
     background-color: #f0f9eb;
 }
+
 .toast-info {
     color: #909399;
     background-color: #f4f4f5;
 }
+
 .toast-warning {
     color: #e6a23c;
     background-color: #fdf6ec;
 }
+
 .toast-error {
     color: #f56c6c;
     background-color: #fef0f0;

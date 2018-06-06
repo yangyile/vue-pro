@@ -1,6 +1,6 @@
 <template>
 <transition name="fade">
-    <dialog-mask v-if="show">
+    <page-mask v-if="show">
         <section
             class="confirm-main"
             v-if="show"
@@ -25,7 +25,7 @@
                     >{{ cancelBtnText }}</span>
             </div>
             </section>
-    </dialog-mask>
+    </page-mask>
 </transition>
 </template>
 
